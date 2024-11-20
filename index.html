@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>function clone(obj) {
+    if (obj){
+        let functions=[]
+        for (const key in obj) {
+            if(typeof obj[key]==='function') {
+                const functionClone=  obj[key].bind({});
+                functions.push({functionClone,key});
+            }
+        }
+        let parse = JSON.parse(JSON.stringify(obj));
+        for (const func of functions) {
+            parse[func.key]=func.functionClone
+        }
+        console.log(parse)
+        return parse;
+    }
+    throw new Error('stop')}
+const cloneFn = clone({name:'data', age:23, foo() {console.log('hello')}});
+cloneFn.foo()
+let coursesAndDurationArray = [
+    {title: 'JavaScript Complex', monthDuration: 5},
+    {title: 'Java Complex', monthDuration: 6},
+    {title: 'Python Complex', monthDuration: 6},
+    {title: 'QA Complex', monthDuration: 4},
+    {title: 'FullStack', monthDuration: 7},
+    {title: 'Frontend', monthDuration: 4},]
+const courceAddid = coursesAndDurationArray.map((course,index)=> {return {id: index+1,...course }})
+console.log(courceAddid)
+</script>
+</body>
+</html>
