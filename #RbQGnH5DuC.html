@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> #RbQGnH5DuC</title>
+</head>
+<body>
+<script>
+  function addToLocalStorage(arrayName,objToAdd) {
+    // В Local Storage додаємо arrayName(arrayName-ключ по якому в локал сторідж зберігаеться інформація)
+    const key = localStorage.getItem(arrayName);
+    // Робимо перевірку чи існує в локал сторідж arrayName
+    if(!key){
+      throw new Error('stop')
+    }
+    // З джейсон arrayName перетворюємо на об'єкт(массив)
+    const array=JSON.parse(key)
+    //Робимо перевірку чи є обєктом({}) то пушимо objToAdd в наш массив array
+
+    if (typeof objToAdd === 'object'){
+      array.push(objToAdd);}
+    localStorage.setItem(arrayName,JSON.stringify(array))
+
+  }
+  // Робимо перевірку нашої функції
+  addToLocalStorage('pageView',{})
+</script>
+</body>
+</html>
