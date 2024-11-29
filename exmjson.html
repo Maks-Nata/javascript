@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+let urlPost=new URL('https://dummyjson.com/products/add');
+    fetch(urlPost, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            title: 'BMW Pencil',
+        })
+    })
+        .then(res => res.json())
+        .then(value => console.log(value));
+let urlP=new URL('https://jsonplaceholder.typicode.com/posts')
+urlP.searchParams.set('userId',2);
+
+    let url=new URL('https://jsonplaceholder.typicode.com/comments')
+    url.searchParams.set('postId',1);
+    url.searchParams.set('exm','view');
+    url.searchParams
+    fetch( url)
+        .then(value => value.json())
+        .then(value => {console.log(value)});
+
+</script>
+</body>
+</html>
